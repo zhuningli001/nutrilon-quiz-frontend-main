@@ -1,0 +1,28 @@
+@use "../../../styles/colors";
+
+.wrapper {
+  position: relative;
+
+  //   width: calc(100% - 32px);
+  margin: 0 16px;
+  min-height: 160px;
+  //   margin: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: colors.$blue-dark;
+  border-radius: 16px;
+  box-shadow: inset 2px 3px 6px rgba(237, 237, 237, 0.58),
+    // inset -3px -3px 6px darken(colors.$blue-dark, 10%),
+    0 4px 8px rgba(32, 65, 153, 0.5);
+
+  h2 {
+    padding: 0 32px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+}

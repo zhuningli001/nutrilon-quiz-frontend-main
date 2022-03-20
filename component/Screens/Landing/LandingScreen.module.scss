@@ -1,0 +1,52 @@
+@use "../../../styles/colors";
+@use "../../../styles/layouts";
+
+.wrapper {
+  @include layouts.one-screen-wrapper;
+  pointer-events: none;
+  button {
+    pointer-events: auto;
+  }
+}
+
+.interaction {
+  // @extend .levels;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  // gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+  padding: 32px;
+
+  h1 {
+    color: colors.$blue-dark;
+    font-size: 44px;
+    text-align: center;
+  }
+
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    // gap: 16px;
+    > button:first-of-type {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.levels {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

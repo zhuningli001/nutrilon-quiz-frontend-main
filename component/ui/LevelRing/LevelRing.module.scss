@@ -1,0 +1,106 @@
+@use "../../../styles/colors";
+
+.wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center;
+
+  .btn {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(125%);
+    padding: 10px 16px;
+    padding: 0.6em 1em;
+    white-space: nowrap;
+  }
+
+  .level {
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    border-radius: 50%;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right bottom,
+        #fff 0%,
+        rgba(255, 255, 255, 0.85) 19.7%,
+        rgba(255, 255, 255, 0) 36.95%,
+        rgba(161, 166, 183, 0.3) 78.25%,
+        rgba(91, 91, 91, 0.6) 100%
+      );
+      box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.inactive {
+  width: 135px;
+  height: 135px;
+  div {
+    filter: grayscale(100%);
+  }
+  &::before {
+    content: "";
+    @extend ._ring-general;
+    background: linear-gradient(to right bottom, #f1faff, #ebf4ff);
+  }
+}
+
+.active {
+  width: 200px;
+  height: 200px;
+  &::before {
+    content: "";
+    @extend ._ring-general;
+    background: linear-gradient(to right bottom, #ccf2fc, #8db8f4);
+  }
+}
+
+.passed {
+  width: 150px;
+  height: 150px;
+
+  div {
+    filter: sepia(0.6) saturate(1.2);
+  }
+
+  &::before {
+    content: "";
+    @extend ._ring-general;
+    background: colors.gold(135);
+  }
+}
+
+._ring-general {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+  box-shadow: inset 3px 3px 15px rgba(255, 255, 255, 0.35),
+    inset -3px -3px 15px rgba(0, 100, 235, 0.35);
+}
+
+@keyframes float {
+  0% {
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
+    transform: translateY(0px);
+  }
+  50% {
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+    transform: translateY(-5px);
+  }
+  100% {
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
+    transform: translateY(0px);
+  }
+}

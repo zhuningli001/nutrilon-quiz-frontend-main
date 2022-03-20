@@ -1,0 +1,10 @@
+.bg {
+  width: 100vw;
+  max-width: 500px;
+  position: relative;
+  overflow: hidden;
+
+  > div {
+    overflow: hidden;
+  }
+}

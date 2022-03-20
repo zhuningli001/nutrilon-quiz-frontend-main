@@ -1,0 +1,29 @@
+@function gold($deg: null) {
+  @if type-of($deg) == "number" {
+    @return linear-gradient(
+      #{$deg}deg,
+      rgba(255, 234, 150, 1) 0%,
+      rgba(255, 234, 150, 1) 11%,
+      rgba(255, 249, 209, 1) 27%,
+      rgba(254, 240, 191, 1) 34%,
+      rgba(252, 219, 147, 1) 47%,
+      rgba(251, 194, 94, 1) 59%,
+      rgba(255, 232, 150, 1) 86%,
+      rgba(255, 249, 209, 1) 100%
+    );
+  } @else {
+    @return #fbc361;
+  }
+}
+
+$blue-dark: #193d8c;
+$blue-light: #d9e5ef;
+
+$gray: #b1b1b1;
+$gray-light: #e4e4e4;
+$gray-dark: #4a4a4a;
+
+$red: #db4141;
+
+$green: #1d7958;
+$orange: #e66926;

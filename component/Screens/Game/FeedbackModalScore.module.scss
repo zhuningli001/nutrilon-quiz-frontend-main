@@ -1,0 +1,46 @@
+@use "../../../styles/colors";
+
+.wrapper {
+  margin: auto;
+  font-weight: 600;
+  line-height: 60px;
+
+  .sign {
+    font-size: 30px;
+    position: absolute;
+    color: colors.$green;
+    transform: translateX(-150%);
+  }
+
+  .digits {
+    display: flex;
+    // gap: 16px;
+
+    & > span:not(:last-of-type) {
+      margin-right: 16px;
+    }
+
+    span {
+      font-size: 40px;
+      line-height: 60px;
+      text-align: center;
+      width: 50px;
+      color: #fff;
+      background: colors.$green;
+      border-radius: 8px;
+      box-shadow: inset 1px 3px 6px rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.negative {
+  .sign {
+    color: colors.$red !important;
+  }
+
+  .digits {
+    span {
+      background: colors.$red !important;
+    }
+  }
+}

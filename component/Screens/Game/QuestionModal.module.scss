@@ -1,0 +1,48 @@
+@use "../../../styles/layouts";
+
+.screen {
+  z-index: 20;
+  @include layouts.one-screen-wrapper;
+  position: absolute;
+  background: center / cover no-repeat
+    url("https://res.cloudinary.com/npc2021/image/upload/v1633525292/background_57bbf5603f.jpg");
+
+  .image {
+    z-index: -1;
+    height: 32.5vh;
+    top: 0;
+    border-radius: 0 0 48px 48px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(75, 80, 93, 0.5);
+  }
+
+  .backbtn {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+  }
+
+  .console {
+    position: absolute;
+    top: calc(32.5vh - 100px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding-bottom: 60px;
+
+    display: flex;
+    flex-direction: column;
+    // gap: 54px;
+
+    .answers {
+      padding: 0;
+      margin: 54px 0 0;
+      display: flex;
+      flex-direction: column;
+      // gap: 24px;
+      > li:not(:last-of-type) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+}

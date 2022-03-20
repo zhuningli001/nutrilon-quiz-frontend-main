@@ -1,0 +1,127 @@
+@use "../../../styles/colors";
+@use "../../../styles/layouts";
+
+.backdrop {
+  // @include layouts.one-screen-wrapper;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  z-index: 25;
+  background: transparentize(colors.$gray, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  z-index: 30;
+
+  width: calc(100% - 32px);
+  min-height: 100vh;
+
+  .content {
+    position: relative;
+    height: fit-content;
+    padding-bottom: 32px;
+    margin-bottom: 12vh;
+    margin-top: 12vh;
+
+    border-radius: 24px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+
+    .scores {
+      position: relative;
+
+      .bgSky {
+        z-index: -1;
+      }
+
+      .bear {
+        position: absolute;
+        right: 0;
+        bottom: -16px;
+        width: 40%;
+
+        &.left {
+          left: 0;
+        }
+      }
+
+      .info {
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        margin: auto;
+
+        display: flex;
+        flex-direction: column;
+        // gap: 24px;
+
+        .header {
+          width: fit-content;
+          margin: auto;
+          margin-bottom: 24px;
+          color: #fff;
+          background: colors.$blue-dark;
+        }
+
+        .exit {
+          position: absolute;
+          right: 24px;
+        }
+      }
+    }
+
+    .explaination {
+      width: 100%;
+      margin-top: 24px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      // gap: 16px;
+
+      h2 {
+        font-size: 32px;
+        line-height: 38px;
+        font-weight: 600;
+        color: colors.$green;
+        margin: 0 0 16px;
+      }
+
+      p {
+        border: solid 3px colors.$blue-dark;
+        width: calc(100% - 64px);
+        min-height: 100px;
+        border-radius: 12px;
+        padding: 24px 16px;
+        background: #fff;
+      }
+    }
+  }
+
+  .negative {
+    .bg {
+      filter: grayscale(100%);
+    }
+
+    .explaination {
+      h2 {
+        color: colors.$red;
+      }
+    }
+  }
+}

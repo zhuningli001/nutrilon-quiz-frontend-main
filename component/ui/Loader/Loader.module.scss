@@ -1,0 +1,43 @@
+$_color: rgb(173, 173, 173);
+$_size: 5px;
+
+.loader {
+  position: relative;
+  animation: fetch-data 1s ease-in-out infinite;
+  animation-delay: 0.4s;
+  background-color: $_color;
+
+  width: $_size;
+  height: 2 * $_size;
+  margin: 2vh auto;
+
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    // background: inherit;
+    background-color: $_color;
+    animation: inherit;
+  }
+
+  &:before {
+    right: 2 * $_size;
+    animation-delay: 0.2s;
+  }
+  &:after {
+    left: 2 * $_size;
+    animation-delay: 0.6s;
+  }
+}
+
+@keyframes fetch-data {
+  0%,
+  100% {
+    box-shadow: 0 0 0 $_color, 0 0 0 $_color;
+  }
+  50% {
+    box-shadow: 0 -#{$_size} 0 $_color, 0 #{$_size} 0 $_color;
+  }
+}

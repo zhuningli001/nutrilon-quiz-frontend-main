@@ -1,0 +1,224 @@
+@use "../../../styles/colors";
+
+// MIXINS
+
+// Shadow Settings
+@mixin button-convex($color) {
+  &.rect {
+    box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.8),
+      inset -3px -3px 6px darken($color, 30%),
+      2px 2px 8px rgba(181, 181, 181, 0.8);
+  }
+  &.circle {
+    box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.8),
+      inset -3px -3px 6px darken($color, 30%);
+  }
+}
+
+@mixin button-concave($color) {
+  box-shadow: inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    inset 3px 3px 6px darken($color, 30%), 2px 2px 8px rgba(181, 181, 181, 0.8);
+}
+
+@mixin create-shape($color) {
+  &.concave {
+    @include button-concave($color);
+  }
+
+  &.convex {
+    @include button-convex($color);
+  }
+}
+
+// Create a pseudo element underneath and blur it
+@mixin float($color) {
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+
+    width: 150%;
+    height: 150%;
+    background: lighten(transparentize($color, 0.5), 20%);
+    filter: blur(8px);
+  }
+}
+
+// Create a ring
+// (WeChat browser renders border differently)
+@mixin ring($color) {
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+
+    width: 120%;
+    height: 120%;
+    background: transparentize($color, 0.5);
+    box-shadow: 2px 2px 8px rgba(181, 181, 181, 0.8);
+  }
+}
+
+// Create text outline effect
+@mixin text-outline($color: white, $size: 1px, $blur: 0) {
+  text-shadow: $size $size $blur transparentize($color, 0.65),
+    $size * -1 $size $blur transparentize($color, 0.65),
+    $size $size * -1 $blur transparentize($color, 0.65),
+    $size * -1 $size * -1 $blur transparentize($color, 0.65);
+}
+
+._btn {
+  outline: none;
+  border: none;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 1.28px;
+  letter-spacing: 0.08em;
+}
+
+// SHAPES
+
+.rect {
+  @extend ._btn;
+  border-radius: 100px;
+  padding: 10px 32px;
+  padding: 0.6em 2em;
+}
+
+.circle {
+  @extend ._btn;
+  position: relative;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // overflow: hidden;
+  padding: 0;
+}
+
+// COLORS
+
+.gold {
+  color: colors.$blue-dark;
+  background: colors.gold(90);
+  @include create-shape(colors.gold());
+
+  &.circle {
+    // @include text-outline();
+
+    background: colors.gold(135);
+
+    &.ring {
+      @include ring(colors.gold());
+    }
+  }
+}
+
+.blue {
+  color: #fff;
+  background: colors.$blue-dark;
+  @include create-shape(colors.$blue-dark);
+
+  &.circle.ring {
+    @include ring(colors.$blue-light);
+    // @include text-outline(colors.$gray);
+  }
+}
+
+.gray {
+  color: #fff;
+  background: colors.$gray;
+  @include create-shape(colors.$gray);
+
+  &.circle.ring {
+    @include ring(colors.$gray);
+  }
+}
+
+.white {
+  color: colors.$blue-dark;
+  background: colors.$gray-light;
+  @include create-shape(colors.$gray-light);
+
+  &.circle.ring {
+    @include ring(colors.$gray-light);
+  }
+}
+
+.red {
+  color: #fff;
+  background: colors.$red;
+  @include create-shape(colors.$red);
+
+  &.circle.ring {
+    @include ring(colors.$red);
+  }
+}
+
+// SIZES
+
+.l {
+  &.rect {
+    min-width: 65%;
+    min-height: 56px;
+    font-size: 26px;
+  }
+
+  &.circle {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+}
+
+.m {
+  &.rect {
+    min-width: 40%;
+    min-height: 48px;
+    font-size: 21px;
+  }
+
+  &.circle {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}
+
+.s {
+  &.rect {
+    min-width: 25%;
+    min-height: 32px;
+    font-size: 15px;
+  }
+
+  &.circle {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+}
+
+// FLOATING EFFECT
+
+.float {
+  &.gold {
+    @include float(colors.gold());
+  }
+
+  &.blue {
+    @include float(colors.$blue-light);
+  }
+
+  &.gray {
+    @include float(colors.$gray);
+  }
+
+  &.red {
+    @include float(colors.$red);
+  }
+}

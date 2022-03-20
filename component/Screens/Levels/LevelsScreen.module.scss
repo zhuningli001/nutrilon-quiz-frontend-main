@@ -1,0 +1,72 @@
+@use "../../../styles/layouts";
+
+.nav {
+  max-height: 150px;
+  top: 0;
+  left: 0;
+  @include layouts.fixed;
+}
+
+.content {
+  margin-top: 150px;
+}
+
+.title {
+  padding: 0.4em 0;
+  flex: 1;
+  background: none;
+  box-shadow: none;
+}
+
+.map {
+  position: relative;
+  min-height: 500px;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+
+  //   padding-top: 72.8%;
+
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    bottom: 0;
+    right: 5%;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+    background-image: url("/bg-map-path-update.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+  }
+
+  * {
+    pointer-events: unset;
+  }
+
+  .path {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 5%;
+    right: 5%;
+    width: 80%;
+    height: auto;
+    z-index: -1;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+  }
+}
+
+.action {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 64px;
+  padding-top: 64px;
+}

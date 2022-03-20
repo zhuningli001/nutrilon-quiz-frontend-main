@@ -1,0 +1,33 @@
+.badge {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+
+  .btn {
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 16px;
+    padding: 0.6em 1em;
+  }
+
+  .avatar {
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom;
+  }
+
+  .mom {
+    transform: scale(0.45) translate(150%, 10%);
+  }
+
+  .dad {
+    transform: scale(0.5) translate(-50%, 10%);
+  }
+
+  .baby {
+    transform: scale(0.65) translateX(-50%);
+  }
+}

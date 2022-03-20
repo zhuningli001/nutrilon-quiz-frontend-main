@@ -1,0 +1,50 @@
+@use "../../../styles/colors";
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+
+  width: 80px;
+  height: 80px;
+  background: colors.$gray-light;
+  border-radius: 50%;
+  box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.8),
+    inset -3px -3px 6px darken(colors.$gray, 30%);
+
+  .index {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    color: colors.$blue-dark;
+    span {
+      font-size: 12px;
+      &:nth-of-type(2) {
+        padding: 0 3px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .timer {
+    fill: none;
+    stroke: colors.$blue-dark;
+    stroke-width: 8px;
+    stroke-linecap: round;
+    stroke-dasharray: 188px;
+    stroke-dashoffset: 188px;
+    animation: countdown 20s linear;
+  }
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 188px;
+  }
+}

@@ -1,0 +1,90 @@
+@use "../styles/colors";
+
+.nav {
+  position: relative;
+}
+
+.title {
+  background: transparent;
+  box-shadow: none;
+  font-size: 32px;
+  line-height: 44px;
+  padding: 0;
+  height: 44px;
+}
+
+.score__panel {
+  padding: 32px 60px;
+  white-space: pre-line;
+  text-align: center;
+  color: colors.$gray-dark;
+  font-weight: 600;
+
+  .content {
+    font-size: 24px;
+    line-height: 36px;
+    padding-bottom: 24px;
+  }
+
+  .info {
+    font-size: 20px;
+    line-height: 1.5em;
+    padding-bottom: 12px;
+  }
+
+  .score {
+    width: fit-content;
+  }
+}
+
+.puzzle {
+  width: 66%;
+  margin: 0 auto 16px;
+}
+
+.action {
+  width: 65%;
+  margin: 0 auto 60px;
+
+  .btns {
+    display: flex;
+    flex-direction: column;
+    // gap: 24px;
+
+    button {
+      width: 100%;
+
+      &:not(:last-of-type) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+}
+
+.caption {
+  display: inline-block;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  color: colors.$gray-dark;
+  margin-bottom: 12px;
+}
+
+._color-animation {
+  transition: color 0.5s ease-in-out;
+}
+
+.green {
+  color: colors.$green;
+  @extend ._color-animation;
+}
+
+.orange {
+  color: colors.$red;
+  @extend ._color-animation;
+}
+
+.bw {
+  filter: grayscale(100%);
+  transition: filter 1s ease-in-out;
+}
